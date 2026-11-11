@@ -1,0 +1,7 @@
+**/bin
+**/obj
+.git
+out
+cov
+tools
+TestResults

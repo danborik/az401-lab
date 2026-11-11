@@ -1,0 +1,32 @@
+# Reference answer for lab 3.1 (Azure Pipelines). Write your own with Copilot first, then compare.
+# To use it: copy to the repo root and create a pipeline from it.
+trigger:
+  branches: { include: [ main ] }
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: UseDotNet@2
+  inputs: { packageType: sdk, version: 10.x }
+
+- script: dotnet build --configuration Release
+  displayName: Build
+
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: test
+    projects: '**/*Tests.csproj'
+    arguments: '--configuration Release --collect "XPlat Code Coverage"'
+    publishTestResults: true
+
+- task: PublishCodeCoverageResults@2
+  inputs:
+    summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
+
+- script: dotnet publish src/Api -c Release -o $(Build.ArtifactStagingDirectory)
+  displayName: Publish
+
+- publish: $(Build.ArtifactStagingDirectory)
+  artifact: drop

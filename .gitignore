@@ -1,0 +1,10 @@
+bin/
+obj/
+out/
+cov/
+tools/
+TestResults/
+.vs/
+.idea/
+*.user
+*.swp
