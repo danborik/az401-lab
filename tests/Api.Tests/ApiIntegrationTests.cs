@@ -55,4 +55,12 @@ public class ApiIntegrationTests : IClassFixture<WebApplicationFactory<Program>>
         var response = await _client.GetAsync("/error");
         Assert.Equal(HttpStatusCode.InternalServerError, response.StatusCode);
     }
+    
+    [Fact]
+    public async Task Time_ReturnsOk()
+    {
+        var response = await _client.GetAsync("/time");
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Contains("utc", await response.Content.ReadAsStringAsync());
+    }    
 }

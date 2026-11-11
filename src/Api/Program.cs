@@ -66,6 +66,9 @@ app.MapGet("/version", (IWebHostEnvironment env) => Results.Ok(new
     machine = Environment.MachineName
 }));
 
+// Lab 1.1: current server time in UTC.
+app.MapGet("/time", () => Results.Ok(new { utc = DateTime.UtcNow.ToString("O") }));
+
 // Feature flag demo (lab 3.10).
 app.MapGet("/greet", async (string? name, IFeatureManager features, GreetingService greeter) =>
 {
