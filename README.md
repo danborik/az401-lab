@@ -1,5 +1,7 @@
 # az401-lab
 
+[![Board Status](https://dev.azure.com/DanielBorik/69a49705-ce11-497b-bbd3-8a7904e3cc7a/25cf2100-dee7-4c2a-9894-537a10ff733e/_apis/work/boardbadge/ae0087e8-e814-4325-9669-4cd3670ad048)](https://dev.azure.com/DanielBorik/69a49705-ce11-497b-bbd3-8a7904e3cc7a/_boards/board/t/25cf2100-dee7-4c2a-9894-537a10ff733e/Stories/)
+
 Small .NET 10 web API used for the AZ-401 study labs. It has a shared library
 (packaged in lab 3.6), unit and integration tests with coverage, Bicep for App
 Service with a staging slot, a Dockerfile, and endpoints built to be broken on
