@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "ado-remote": {
+      "type": "http",
+      "url": "https://mcp.dev.azure.com/DanielBorik"
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    }
+  }
+}
