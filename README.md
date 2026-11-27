@@ -1,24 +1,29 @@
 # az401-lab
 
 [![Board Status](https://dev.azure.com/DanielBorik/69a49705-ce11-497b-bbd3-8a7904e3cc7a/25cf2100-dee7-4c2a-9894-537a10ff733e/_apis/work/boardbadge/ae0087e8-e814-4325-9669-4cd3670ad048)](https://dev.azure.com/DanielBorik/69a49705-ce11-497b-bbd3-8a7904e3cc7a/_boards/board/t/25cf2100-dee7-4c2a-9894-537a10ff733e/Stories/)
+[![CI status](https://img.shields.io/badge/CI-not%20configured-lightgrey)](#contributing)
 
 Small .NET 10 web API used for the AZ-401 study labs. It has a shared library
 (packaged in lab 3.6), unit and integration tests with coverage, Bicep for App
 Service with a staging slot, a Dockerfile, and endpoints built to be broken on
 purpose for the monitoring labs.
 
-## Prerequisites
+## Getting started
 
-.NET 10 SDK (`dotnet --version` shows 10.0.x). `global.json` pins the 10.0 SDK band.
+Install the .NET 10 SDK. The repository's `global.json` pins the 10.0 SDK band;
+check the installed version with `dotnet --version`.
 
-## Run locally
+From the repository root, restore dependencies, run the tests, and start the API:
 
 ```bash
-dotnet test                      # 25 unit and integration tests
-dotnet run --project src/Api     # then open the URL it prints, e.g. http://localhost:5xxx/
+dotnet restore
+dotnet test
+dotnet run --project src/Api
 ```
 
-On first restore, `packages.lock.json` files are created. Commit them.
+Open the URL printed by `dotnet run` (typically `http://localhost:5xxx/`). On
+first restore, `packages.lock.json` files may be created; include them in your
+changes.
 
 ## Endpoints
 
@@ -54,6 +59,16 @@ infra/main.bicep    App Service plan S1 + web app + staging slot (.NET 10)
 reference/          reference pipelines for lab 3.1 (not active)
 Dockerfile          container image for container labs
 ```
+
+## Contributing
+
+Contributions are welcome. Create a branch, make a focused change, and run
+`dotnet test` from the repository root before opening a pull request. Include
+the context and verification steps in your pull request description.
+
+The CI badge above is a placeholder: the pipeline examples in `reference/` are
+not active. Replace it with the status badge for the configured CI provider
+when a pipeline is enabled.
 
 ## Push to both platforms
 
